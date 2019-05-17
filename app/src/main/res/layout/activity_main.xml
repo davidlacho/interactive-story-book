@@ -24,10 +24,10 @@
     android:id="@+id/startButton"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="0dp"
-    android:layout_marginLeft="0dp"
-    android:layout_marginRight="0dp"
+    android:background="#ffffff"
     android:text="@string/start_your_adventure"
+    android:textColor="#3ABAEC"
+    android:textSize="16sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"/>
