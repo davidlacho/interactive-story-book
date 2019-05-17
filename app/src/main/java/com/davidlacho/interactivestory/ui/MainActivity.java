@@ -1,4 +1,4 @@
-package com.davidlacho.interactivestory;
+package com.davidlacho.interactivestory.ui;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import com.davidlacho.interactivestory.R;
 
 public class MainActivity extends AppCompatActivity {
 

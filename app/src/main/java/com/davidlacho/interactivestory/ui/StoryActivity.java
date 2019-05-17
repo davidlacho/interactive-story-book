@@ -1,9 +1,11 @@
-package com.davidlacho.interactivestory;
+package com.davidlacho.interactivestory.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import com.davidlacho.interactivestory.R;
+import com.davidlacho.interactivestory.model.Page;
 
 public class StoryActivity extends AppCompatActivity {
 
