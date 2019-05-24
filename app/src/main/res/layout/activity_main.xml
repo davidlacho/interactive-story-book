@@ -38,7 +38,7 @@
     android:background="#FFFFFF"
     android:ems="10"
     android:hint="@string/enter_your_name"
-    android:inputType="textPersonName|textCapCharacters"
+    android:inputType="textPersonName"
     android:maxLength="30"
     app:layout_constraintBottom_toTopOf="@+id/startButton"
     app:layout_constraintEnd_toEndOf="parent"

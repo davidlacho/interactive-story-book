@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.davidlacho.interactivestory.R;
 import com.davidlacho.interactivestory.model.Page;
 import com.davidlacho.interactivestory.model.Story;
+import java.util.Stack;
 
 public class StoryActivity extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class StoryActivity extends AppCompatActivity {
   private TextView storyTextView;
   private Button choice1Button;
   private Button choice2Button;
+  private Stack<Integer> pageStack = new Stack<Integer>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,10 @@ public class StoryActivity extends AppCompatActivity {
   }
 
   private void loadPage(int pageNumber) {
+    pageStack.push(pageNumber);
+
+    choice1Button.setVisibility(View.VISIBLE);
+    choice2Button.setVisibility(View.VISIBLE);
     final Page page = story.getPage(pageNumber);
     Drawable image = ContextCompat.getDrawable(this, page.getImageId());
     storyImageView.setImageDrawable(image);
@@ -63,11 +69,15 @@ public class StoryActivity extends AppCompatActivity {
     if (page.isFinalPage()) {
       choice1Button.setVisibility(View.INVISIBLE);
       choice2Button.setText(getString(R.string.play_again_button_text));
-      choice2Button.
+      choice2Button.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          loadPage(0);
+        }
+      });
     } else {
       loadButtons(page);
     }
-
   }
 
   private void loadButtons(final Page page) {
@@ -88,5 +98,16 @@ public class StoryActivity extends AppCompatActivity {
         loadPage(nextPage);
       }
     });
+  }
+
+  @Override
+  public void onBackPressed() {
+    pageStack.pop();
+    if (pageStack.isEmpty()) {
+      super.onBackPressed();
+    } else {
+//      This second call to pop will be pushed right back on because it will be loaded back on the page.
+      loadPage(pageStack.pop());
+    }
   }
 }
